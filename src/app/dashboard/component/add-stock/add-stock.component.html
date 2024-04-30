@@ -1,0 +1,25 @@
+
+
+ 
+<div class="login-container"> 
+<form class="login" [formGroup]="myForm" (ngSubmit)="onSubmit()" >
+  
+        <h2>{{ data.title}}</h2>
+   
+        
+         
+        
+        @if (submitted && myForm.get('cantidad')?.hasError('required')){
+          <div class="error-message" >
+              Stock requerido
+          </div>
+        }
+        <input type="number" required formControlName="cantidad" min="1" max="200" placeholder="0" />
+
+        
+       
+    <button  type="submit" >Sumar</button>
+    
+</form>
+</div >
+ 
