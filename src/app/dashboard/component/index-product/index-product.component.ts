@@ -62,6 +62,7 @@ export class IndexProductComponent implements OnInit {
            this.limit=5;
            this.page=1;
            this.loadProducts();
+           console.log("reload")
         }
     });
 
@@ -103,10 +104,7 @@ loadProducts(): void {
      
   }
 
-
   ngOnInit(): void {
-    
-
     /*this.route.queryParams.subscribe(params => {
        const parametro = params['reload'];
        const status = params['status'];

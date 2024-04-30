@@ -27,6 +27,7 @@ import {ProductUpdate} from '../../interfaces/product.interface'
     MatFormFieldModule,
     MatCardModule
   ],
+  providers:[ProductService],
   templateUrl: './add-stock.component.html',
   styleUrl: './add-stock.component.css'
 })
@@ -48,17 +49,31 @@ export class AddStockComponent {
        this.submitted = true;
        if(!this.myForm.valid) return;
        const {cantidad}=this.myForm.value;
-       if(Number(cantidad)<0){
-          this.dialogRef.close("la cantidad es negativa");
+
+       if(Math.sign(cantidad)<0){
+          this.dialogRef.close({
+            error:true,
+            status:"la cantidad es negativa"
+          });
+       }else{
+           this.productService.updateStockAdd(this.data.id,cantidad).subscribe(response => {
+              console.log("producto actualizado ",response)
+              this.dialogRef.close({
+                  error:false,
+                  status:"producto actualizado"
+              });
+           }, error => {
+              console.error('Error en la solicitud :', error);
+              this.dialogRef.close({
+                error:true,
+                status:error
+              });
+           });
+           return;
        }
-       this.productService.updateStock(this.data.id,cantidad).subscribe(response => {
-          console.log("producto actualizado ",response)
-          this.dialogRef.close();
-       }, error => {
-          console.error('Error en la solicitud :', error);
-          this.dialogRef.close();
-       });
-       return;
+
+
+       /**/
        /*this.productService.update(data.id,{}).subscribe(response => {
               console.log("producto eliminado ")
                

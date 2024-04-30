@@ -16,19 +16,29 @@ constructor(private httpClient: HttpClient,private router: Router) { }
   
   
 
-  updateStock(id:string,stock:string):Observable<productResponseUpdate>{
+  updateStockAdd(id:string,stock:string):Observable<productResponseUpdate>{
     const token = localStorage.getItem('accessToken');
       if (token) {
           const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
           });
-          return this.httpClient.post<productResponseUpdate>(`${ this.baseUrl }/producto/stock/?id=${ id }&stock=${stock}`, {},{ headers });
+          return this.httpClient.post<productResponseUpdate>(`${ this.baseUrl }/producto/stockAdd/?id=${ id }&stock=${stock}`, {},{ headers });
       }
 
     return new Observable<productResponseUpdate>();
   }
 
+  updateStockSub(id:string,stock:string):Observable<productResponseUpdate>{
+    const token = localStorage.getItem('accessToken');
+      if (token) {
+          const headers = new HttpHeaders({
+            'Authorization': `Bearer ${token}`
+          });
+          return this.httpClient.post<productResponseUpdate>(`${ this.baseUrl }/producto/stockSub/?id=${ id }&stock=${stock}`, {},{ headers });
+      }
 
+    return new Observable<productResponseUpdate>();
+  }
 
   findOne(id:string):Observable<productResponseUpdate>{
       const token = localStorage.getItem('accessToken');

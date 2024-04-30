@@ -70,9 +70,11 @@ export class ProductCardComponent implements OnInit {
           });
           dialogRef.afterClosed().subscribe(response => {
               if(response!==undefined){
-                   
+                   console.log(response)
+                   this.openSnackBar(response.status, 'Cerrar');
+                   this.returnIndex();
               }else{
-                console.log("error: salio del formulario")
+                //console.log("error: salio del formulario")
               }
           }, error => {
                 this.openSnackBar('error recibiendo la respuesta del dialog', 'Cerrar');
@@ -85,8 +87,28 @@ export class ProductCardComponent implements OnInit {
 
     subtraStock(id?:string){
        if(id!==undefined){
-         this.openSnackBar('Restado al stock', 'Cerrar');
-         this.returnIndex();
+          const dialogRef = this.dialog.open(SubtractionStockComponent, {
+                width: '220px',
+                height: '220px',
+                data: {
+                  title: 'Restar al stock',
+                  id
+                }
+          });
+          dialogRef.afterClosed().subscribe(response => {
+              if(response!==undefined){
+                   console.log(response)
+                   this.openSnackBar(response.status, 'Cerrar');
+                   this.returnIndex();
+              }else{
+                //console.log("error: salio del formulario")
+              }
+          }, error => {
+                this.openSnackBar('error recibiendo la respuesta del dialog', 'Cerrar');
+                 
+          });
+          //this.openSnackBar('Sumado al stock', 'Cerrar');
+          //this.returnIndex();
        }
     }
     delete(id?:string){
