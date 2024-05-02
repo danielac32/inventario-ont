@@ -73,7 +73,7 @@ export class NavigationComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 2000, // Duración en milisegundos
+      duration: 3000, // Duración en milisegundos
       verticalPosition: 'top', // Posición vertical de la alerta
       horizontalPosition: 'end', // Posición horizontal de la alerta
       panelClass: ['green']
@@ -106,15 +106,18 @@ export class NavigationComponent implements OnInit {
   
   report(){
       const dialogRef = this.dialog.open(ReportComponent, {
-            width: '500px',
-            height: '600px',
+            width: '200px',
+            height: '300px',
             data: {
               title: 'Reporte'
             }
       });
       dialogRef.afterClosed().subscribe(response => {
           if(response!==undefined){
-               
+               if(response.error){
+                  this.openSnackBar(response.status, 'Cerrar');
+               }
+               this.openSnackBar(response.status, 'Cerrar');
           }else{
             console.log("error: salio del formulario")
           }

@@ -1,5 +1,5 @@
 import {category} from './category.interface'
-
+import {User} from '../../auth/interface/auth-login.interface'
 
 
 export interface addProduct{
@@ -18,7 +18,25 @@ export interface subProduct{
   cedula:number;
 }
 
-
+export interface mod{
+  tipo:string;
+  valor:number;
+  entregado:string;
+  observacion:string;
+  cedula:number;
+}
+export interface getProduct{
+  id?:number;
+  descripcion: string;
+  stock: number;
+  codigo: string;
+  categoriaId?: number;
+  createdAt?:string;
+  categoria?:category;
+  userId?:number;
+  user:User;
+  modificaciones:mod;
+}
 export interface Product{
   id?:number;
   descripcion: string;
@@ -31,6 +49,11 @@ export interface Product{
   tipo?:string;
   valor?:number;
   entregado?:string;
+}
+
+
+export interface productResponseByDate{
+  producto:getProduct[];
 }
 
 export interface ProductUpdate{

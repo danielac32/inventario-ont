@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development'
-import {subProduct,addProduct,productResponseUpdate,ProductUpdate,productResponseDelete,productResponseCreate,Product,productResponse} from '../interfaces/product.interface'
+import {productResponseByDate,subProduct,addProduct,productResponseUpdate,ProductUpdate,productResponseDelete,productResponseCreate,Product,productResponse} from '../interfaces/product.interface'
+import * as XLSX from 'xlsx';
+
 
 
 @Injectable({
@@ -15,6 +17,32 @@ private baseUrl = environment.apiUrl;//'http://localhost:4000';
 constructor(private httpClient: HttpClient,private router: Router) { }
   
   
+  
+
+  generarExcel(data: any[], nombreArchivo: string): void {
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    // Generar el archivo Excel y descargarlo
+    XLSX.writeFile(wb, `${nombreArchivo}.xlsx`);
+  }
+
+  
+
+  getProducts(init:string,end:string):Observable<productResponseByDate>{
+    const token = localStorage.getItem('accessToken');
+      if (token) {
+          const headers = new HttpHeaders({
+            'Authorization': `Bearer ${token}`
+          });
+         // return this.httpClient.post<productResponseUpdate>(`${ this.baseUrl }/producto/stockAdd/?id=${ id }&stock=${stock}`, {},{ headers });
+         return this.httpClient.get<productResponseByDate>(`${ this.baseUrl }/producto/date?init=${ init }&end=${end}`,{ headers });
+      }
+
+    return new Observable<productResponseByDate>();
+  }
+
 
   updateStockAdd(id:string,add:addProduct):Observable<productResponseUpdate>{
     const token = localStorage.getItem('accessToken');
