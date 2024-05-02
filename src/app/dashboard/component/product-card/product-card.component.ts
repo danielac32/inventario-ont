@@ -61,8 +61,8 @@ export class ProductCardComponent implements OnInit {
     addStock(id?:string){
        if(id!==undefined){
           const dialogRef = this.dialog.open(AddStockComponent, {
-                width: '220px',
-                height: '220px',
+                width: '200px',
+                height: '180px',
                 data: {
                   title: 'Añadir al stock',
                   id
@@ -70,7 +70,9 @@ export class ProductCardComponent implements OnInit {
           });
           dialogRef.afterClosed().subscribe(response => {
               if(response!==undefined){
-                   console.log(response)
+                  if(response.error){
+                      this.openSnackBar(response.status, 'Cerrar');
+                   }
                    this.openSnackBar(response.status, 'Cerrar');
                    this.returnIndex();
               }else{
@@ -88,8 +90,8 @@ export class ProductCardComponent implements OnInit {
     subtraStock(id?:string){
        if(id!==undefined){
           const dialogRef = this.dialog.open(SubtractionStockComponent, {
-                width: '220px',
-                height: '220px',
+                width: '300px',
+                height: '400px',
                 data: {
                   title: 'Restar al stock',
                   id
@@ -97,7 +99,9 @@ export class ProductCardComponent implements OnInit {
           });
           dialogRef.afterClosed().subscribe(response => {
               if(response!==undefined){
-                   console.log(response)
+                   if(response.error){
+                      this.openSnackBar(response.status, 'Cerrar');
+                   }
                    this.openSnackBar(response.status, 'Cerrar');
                    this.returnIndex();
               }else{

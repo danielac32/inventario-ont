@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development'
-import {productResponseUpdate,ProductUpdate,productResponseDelete,productResponseCreate,Product,productResponse} from '../interfaces/product.interface'
+import {subProduct,addProduct,productResponseUpdate,ProductUpdate,productResponseDelete,productResponseCreate,Product,productResponse} from '../interfaces/product.interface'
 
 
 @Injectable({
@@ -16,25 +16,26 @@ constructor(private httpClient: HttpClient,private router: Router) { }
   
   
 
-  updateStockAdd(id:string,stock:string):Observable<productResponseUpdate>{
+  updateStockAdd(id:string,add:addProduct):Observable<productResponseUpdate>{
     const token = localStorage.getItem('accessToken');
       if (token) {
           const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
           });
-          return this.httpClient.post<productResponseUpdate>(`${ this.baseUrl }/producto/stockAdd/?id=${ id }&stock=${stock}`, {},{ headers });
+         // return this.httpClient.post<productResponseUpdate>(`${ this.baseUrl }/producto/stockAdd/?id=${ id }&stock=${stock}`, {},{ headers });
+         return this.httpClient.post<productResponseUpdate>(`${ this.baseUrl }/producto/stockAdd/?id=${ id }`, {...add},{ headers });
       }
 
     return new Observable<productResponseUpdate>();
   }
 
-  updateStockSub(id:string,stock:string):Observable<productResponseUpdate>{
+  updateStockSub(id:string,sub:subProduct):Observable<productResponseUpdate>{
     const token = localStorage.getItem('accessToken');
       if (token) {
           const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
           });
-          return this.httpClient.post<productResponseUpdate>(`${ this.baseUrl }/producto/stockSub/?id=${ id }&stock=${stock}`, {},{ headers });
+          return this.httpClient.post<productResponseUpdate>(`${ this.baseUrl }/producto/stockSub/?id=${ id }`, {...sub},{ headers });
       }
 
     return new Observable<productResponseUpdate>();

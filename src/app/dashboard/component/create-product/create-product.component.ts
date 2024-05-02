@@ -13,6 +13,7 @@ import {category } from '../../interfaces/category.interface'
 import {AuthService} from '../../../auth/services/auth.service'
 
 import {MessageService} from '../../services/subjectService';
+import {ProductEnum} from '../../interfaces/product.enum';
 
 @Component({
   selector: 'app-create-product',
@@ -59,12 +60,21 @@ constructor(
 
   }
 
+
   onSubmit(){
        this.submitted = true;
        if(!this.myForm.valid) return;
        const { descripcion, stock, codigo, categoria} = this.myForm.value;
        const user = this.authService.getUser();
-       this.dialogRef.close({ descripcion, stock, codigo, categoriaId:Number(categoria),userId:Number(user.id)});
+       this.dialogRef.close({ tipo:ProductEnum.create,
+                              valor:stock,
+                              entregado:ProductEnum.self,
+                              descripcion, 
+                              stock, 
+                              codigo, 
+                              categoriaId:Number(categoria),
+                              userId:Number(user.id)
+                            });
        this.messageService.sendMessage({
               receiver:"index-products"
        });

@@ -1,23 +1,43 @@
+<div class="container">
+        <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
+           <h2>{{ data.title }}</h2>
+
+            <div class="form-group">
+                
+                @if (submitted && myForm.get('entregado')?.hasError('required')){
+                  <div class="error-message" >
+                      Destinatario requerido
+                  </div>
+                }
+                <input type="text" placeholder="Destinatario" formControlName="entregado" class="input-number" required>
+
+                <input type="number" placeholder="Cedula (Opcional)" formControlName="cedula" class="input-number">
+                
+                <!--@if (submitted && myForm.get('observacion')?.hasError('required')){
+                  <div class="error-message" >
+                      Observacion requerida
+                  </div>
+                }-->
+
+                <textarea formControlName="observacion" rows="5" cols="25" placeholder="Observacion"></textarea>
+     
+
+                @if (submitted && myForm.get('cantidad')?.hasError('required')){
+                  <div class="error-message" >
+                      Stock requerido
+                  </div>
+                }
+                @if (submitted && myForm.get('cantidad')?.hasError('required')){
+                  <div class="error-message" >
+                      Stock requerido
+                  </div>
+                }
+                <input type="number" required placeholder="cantidad" class="input-number" formControlName="cantidad">
+            </div>
 
 
- 
-<div class="login-container"> 
-<form class="login" [formGroup]="myForm" (ngSubmit)="onSubmit()" >
-  
-        <h2>{{ data.title}}</h2>
-   
-      
-        @if (submitted && myForm.get('cantidad')?.hasError('required')){
-          <div class="error-message" >
-              Stock requerido
-          </div>
-        }
-        <input type="number" required formControlName="cantidad" placeholder="0" />
+            <button type="submit" class="btn" matTooltip="Restar"><mat-icon>ads_click</mat-icon></button>
+        </form>
+</div>
 
-        
-       
-    <button  type="submit" >Restar</button>
-    
-</form>
-</div >
  

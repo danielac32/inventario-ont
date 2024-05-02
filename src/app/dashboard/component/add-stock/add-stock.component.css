@@ -1,10 +1,13 @@
-.login-container {
-  top: 10px;
-  max-width: 400px; /* Establece un ancho máximo para el contenedor */
-  margin: 0 auto; /* Centra el contenedor horizontalmente */
-  padding: 20px; /* Agrega un poco de espacio alrededor del contenedor */
-
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
 }
+
 
 
 .error-message {
@@ -13,64 +16,36 @@
   margin-top: 5px;
 }
 
-
- 
-.login > select {
-  font-family: "Asap", sans-serif;
-  display: block;
-  border: 2px solid #007bff; /* Cambia el color del borde según tus preferencias */
-  border-radius: 5px;
-  outline: none;
-  font-size: 16px;
-  background: white;
-  width: 50%;
-
-  padding: 10px 10px;
-  margin: 15px -10px;
+.container {
+    text-align: center;
 }
 
-
-
-.login > textarea {
-  font-family: "Asap", sans-serif;
-  display: block;
-  border: 2px solid #007bff; /* Cambia el color del borde según tus preferencias */
-  border-radius: 5px;
-  outline: none;
-  font-size: 16px;
-  background: white;
-  width: 100%;
- 
-  padding: 10px 10px;
-  margin: 15px -10px;
+.form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.login > input {
-  font-family: "Asap", sans-serif;
-  display: block;
-  border-radius: 5px;
-  font-size: 16px;
-  background: white;
-  width: 100%;
-  border: 2px solid #007bff;
-  padding: 10px 10px;
-  margin: 15px -10px;
+.input-number {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
-.login >button {
-   text-align: center;
-  font-family: "Asap", sans-serif;
-  cursor: pointer;
-  color: #fff;
-  font-size: 16px;
-  text-transform: uppercase;
-  width: 80px;
-  border: 0;
-  padding: 10px 0;
-  margin-top: 10px;
-  margin-left: -5px;
-  border-radius: 5px;
-  background-color: rgb(0,0,255);
-  transition: background-color 300ms;
-}
- 
 
+.btn {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}

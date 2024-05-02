@@ -12,7 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ProductService} from '../../services/product.service'
-import {ProductUpdate} from '../../interfaces/product.interface'
+//import {ProductUpdate} from '../../interfaces/product.interface'
+import {ProductEnum} from '../../interfaces/product.enum';
 
 
 @Component({
@@ -56,7 +57,12 @@ export class AddStockComponent {
             status:"la cantidad es negativa"
           });
        }else{
-           this.productService.updateStockAdd(this.data.id,cantidad).subscribe(response => {
+           this.productService.updateStockAdd(this.data.id,{
+                                                              stock:Number(cantidad),
+                                                              tipo:ProductEnum.add,
+                                                              valor:Number(cantidad),
+                                                              entregado:ProductEnum.self
+                                                            }).subscribe(response => {
               console.log("producto actualizado ",response)
               this.dialogRef.close({
                   error:false,
@@ -66,7 +72,7 @@ export class AddStockComponent {
               console.error('Error en la solicitud :', error);
               this.dialogRef.close({
                 error:true,
-                status:error
+                status:error.error.message
               });
            });
            return;

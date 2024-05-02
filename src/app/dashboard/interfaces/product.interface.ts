@@ -1,4 +1,24 @@
 import {category} from './category.interface'
+
+
+
+export interface addProduct{
+  stock: number;
+  tipo?:string;
+  valor?:number;
+  entregado?:string;
+}
+
+export interface subProduct{
+  stock: number;
+  tipo:string;
+  valor:number;
+  entregado:string;
+  observacion:string;
+  cedula:number;
+}
+
+
 export interface Product{
   id?:number;
   descripcion: string;
@@ -8,6 +28,9 @@ export interface Product{
   categoriaId: number;
   createdAt?:string;
   categoria?:category;
+  tipo?:string;
+  valor?:number;
+  entregado?:string;
 }
 
 export interface ProductUpdate{

@@ -100,7 +100,10 @@ export class NavigationComponent implements OnInit {
       //this.router.navigate(['/auth/login']);
   }
   
-
+  
+  report(){
+    
+  }
   crearCategoria(){
       const dialogRef = this.dialog.open(CategoryComponent, {
             width: '500px',
