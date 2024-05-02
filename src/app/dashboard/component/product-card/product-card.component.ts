@@ -91,7 +91,7 @@ export class ProductCardComponent implements OnInit {
        if(id!==undefined){
           const dialogRef = this.dialog.open(SubtractionStockComponent, {
                 width: '300px',
-                height: '400px',
+                height: '430px',
                 data: {
                   title: 'Restar al stock',
                   id

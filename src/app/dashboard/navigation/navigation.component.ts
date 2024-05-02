@@ -24,6 +24,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {Product} from '../interfaces/product.interface'
 import {ProductService} from '../services/product.service'
 import {CategoryComponent} from '../component/category/category.component'
+import {ReportComponent} from '../component/report/report.component'
+
+
 
 @Component({
   selector: 'app-navigation',
@@ -102,7 +105,22 @@ export class NavigationComponent implements OnInit {
   
   
   report(){
-    
+      const dialogRef = this.dialog.open(ReportComponent, {
+            width: '500px',
+            height: '600px',
+            data: {
+              title: 'Reporte'
+            }
+      });
+      dialogRef.afterClosed().subscribe(response => {
+          if(response!==undefined){
+               
+          }else{
+            console.log("error: salio del formulario")
+          }
+      }, error => {
+            this.openSnackBar('error recibiendo la respuesta del dialog', 'Cerrar');
+      });
   }
   crearCategoria(){
       const dialogRef = this.dialog.open(CategoryComponent, {

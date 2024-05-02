@@ -1,8 +1,9 @@
 <div class="container">
+   <div class="form-group">
         <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
            <h2>{{ data.title }}</h2>
 
-            <div class="form-group">
+           
                 
                 @if (submitted && myForm.get('entregado')?.hasError('required')){
                   <div class="error-message" >
@@ -19,7 +20,7 @@
                   </div>
                 }-->
 
-                <textarea formControlName="observacion" rows="5" cols="25" placeholder="Observacion"></textarea>
+                <textarea class ="input-number" formControlName="observacion" rows="5" cols="25" placeholder="Observacion"></textarea>
      
 
                 @if (submitted && myForm.get('cantidad')?.hasError('required')){
@@ -33,11 +34,12 @@
                   </div>
                 }
                 <input type="number" required placeholder="cantidad" class="input-number" formControlName="cantidad">
-            </div>
+        
 
 
             <button type="submit" class="btn" matTooltip="Restar"><mat-icon>ads_click</mat-icon></button>
         </form>
+            </div>
 </div>
 
  
