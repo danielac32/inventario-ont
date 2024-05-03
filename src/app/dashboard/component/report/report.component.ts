@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import {ProductService} from '../../services/product.service'
+import {getProduct} from '../../interfaces/product.interface'
 
 @Component({
   selector: 'app-report',
@@ -35,6 +36,8 @@ public myForm: FormGroup = this.fb.group({
 //startTime?: string; // Aquí almacenarías el valor de inicio de tu formulario
 //endTime?: string; // Aquí almacenarías el valor de inicio de tu formulario
 submitted=false;
+lista: getProduct[]=[];
+
  constructor(
         private fb: FormBuilder,
         private route: ActivatedRoute,
@@ -56,11 +59,15 @@ submitted=false;
     	this.dialogRef.close({
           error:true,
           status:"la fecha de inicio es mayor a la fecha final"
-        });
+      });
     }
     this.productService.getProducts(startDate,endDate).subscribe(({producto}) => {
-      console.log("aqui ",producto)
-       
+      console.log("aqui ",producto[1].modificaciones)
+
+      //const {descripcion,stock,codigo,categoria.name,modificaciones}=producto;
+
+
+     // this.productService.generarExcel(, `desde(${startDate}) hasta(${endDate})`);
     }, error => {
       console.error('Error en la solicitud :', error);
     });

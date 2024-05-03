@@ -35,7 +35,15 @@ export interface getProduct{
   categoria?:category;
   userId?:number;
   user:User;
-  modificaciones:mod;
+  modificaciones:mod[];
+}
+
+export interface excelReport{
+  descripcion: string;
+  stock: number;
+  codigo: string;
+  categoria:string;
+  modificaciones:mod[];
 }
 export interface Product{
   id?:number;
