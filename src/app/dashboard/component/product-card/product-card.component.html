@@ -21,6 +21,9 @@
     <button  mat-raised-button matTooltip="Eliminar producto" (click)="delete(producto.id?.toString())">
       <mat-icon>delete</mat-icon>
     </button>
+    <button  mat-raised-button matTooltip="Detalles" (click)="detail(producto.id?.toString())">
+      <mat-icon>visibility</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>
 }

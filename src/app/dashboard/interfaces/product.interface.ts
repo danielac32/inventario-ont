@@ -19,6 +19,8 @@ export interface subProduct{
 }
 
 export interface mod{
+  id?:number;
+  createdAt?:string;
   tipo:string;
   valor:number;
   entregado:string;
@@ -54,9 +56,10 @@ export interface Product{
   categoriaId: number;
   createdAt?:string;
   categoria?:category;
-  tipo?:string;
-  valor?:number;
-  entregado?:string;
+
+  //tipo?:string;
+  //valor?:number;
+  //entregado?:string;
 }
 
 
@@ -84,6 +87,10 @@ export interface productResponseDelete{
 }
 export interface productResponseUpdate{
   producto:Product;
+}
+
+export interface productResponseFindOne{
+  producto:getProduct;
 }
 
 export interface productResponse{

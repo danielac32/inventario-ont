@@ -12,7 +12,7 @@ import {MessageService} from '../../services/subjectService';
 import {AddStockComponent} from '../add-stock/add-stock.component';
 import {SubtractionStockComponent} from '../subtraction-stock/subtraction-stock.component'
 import { MatDialog } from '@angular/material/dialog';
-
+import {DetailComponent} from '../detail/detail.component'
 
 
 @Component({
@@ -126,6 +126,32 @@ export class ProductCardComponent implements OnInit {
            });
        }
     }
+    detail(id?:string){
+       if(id!==undefined){
+           const dialogRef = this.dialog.open(DetailComponent, {
+                width: '720px',
+                height: '400px',
+                data: {
+                  title: 'Detalles',
+                  id
+                }
+          });
+          dialogRef.afterClosed().subscribe(response => {
+              if(response!==undefined){
+                  if(response.error){
+                      this.openSnackBar(response.status, 'Cerrar');
+                   }
+                   this.openSnackBar(response.status, 'Cerrar');
+                   this.returnIndex();
+              }else{
+                //console.log("error: salio del formulario")
+              }
+          }, error => {
+                this.openSnackBar('error recibiendo la respuesta del dialog', 'Cerrar');
+          });
+       }
+    }
+
 
     returnIndex(){
         /*const parametros: NavigationExtras = {

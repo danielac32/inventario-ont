@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development'
-import {productResponseByDate,subProduct,addProduct,productResponseUpdate,ProductUpdate,productResponseDelete,productResponseCreate,Product,productResponse} from '../interfaces/product.interface'
+import {productResponseFindOne,productResponseByDate,subProduct,addProduct,productResponseUpdate,ProductUpdate,productResponseDelete,productResponseCreate,Product,productResponse} from '../interfaces/product.interface'
 import * as XLSX from 'xlsx';
 
 
@@ -69,15 +69,15 @@ constructor(private httpClient: HttpClient,private router: Router) { }
     return new Observable<productResponseUpdate>();
   }
 
-  findOne(id:string):Observable<productResponseUpdate>{
+  findOne(id:string):Observable<productResponseFindOne>{
       const token = localStorage.getItem('accessToken');
       if (token) {
           const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
           });
-          return this.httpClient.get<productResponseUpdate>(`${ this.baseUrl }/producto/${id}`,{ headers });
+          return this.httpClient.get<productResponseFindOne>(`${ this.baseUrl }/producto/${id}`,{ headers });
       }
-      return new Observable<productResponseUpdate>();
+      return new Observable<productResponseFindOne>();
   }
 
 

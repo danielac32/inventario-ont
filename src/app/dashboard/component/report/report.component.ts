@@ -63,7 +63,7 @@ lista: getProduct[]=[];
     }
     this.productService.getProducts(startDate,endDate).subscribe(({producto}) => {
       console.log("aqui: ",producto[1].modificaciones)
-
+      
      
 
      // this.productService.generarExcel(, `desde(${startDate}) hasta(${endDate})`);
