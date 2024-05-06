@@ -1,0 +1,10 @@
+{
+  "open": false,
+  "port": 4200,
+  "server": {
+    "baseDir": "dist/inventario/browser/",
+    "routes": {
+      "/node_modules": "node_modules"
+    }
+  }
+}

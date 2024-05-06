@@ -6,7 +6,7 @@ import { AuthGuard } from './auth/services/auth.guard';
 import {IndexProductComponent} from './dashboard/component/index-product/index-product.component';
 import {UsersComponent} from './auth/pages/users/users.component';
 import {ProfileComponent} from './auth/pages/profile/profile.component';
-
+import {guardCheckGuard} from './auth/services/guard-check.guard'
 
 export const routes: Routes = [
 { 
@@ -31,7 +31,7 @@ export const routes: Routes = [
             {
                 path: 'users',
                 title: 'users',
-                component: UsersComponent,data: { rol:'ADMIN' },/*canActivate:[guardCheckGuard],*/
+                component: UsersComponent,data: { rol:'admin' },canActivate:[guardCheckGuard],
             },
             {
                 path: 'user',

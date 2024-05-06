@@ -130,7 +130,7 @@ export class ProductCardComponent implements OnInit {
        if(id!==undefined){
            const dialogRef = this.dialog.open(DetailComponent, {
                 width: '720px',
-                height: '400px',
+                height: '450px',
                 data: {
                   title: 'Detalles',
                   id

@@ -22,6 +22,7 @@ install:
 	npm install --force
 
 run:
+	#lite-server #
 	ng serve --host 0.0.0.0
 
 pull:

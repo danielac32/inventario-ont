@@ -98,6 +98,8 @@ constructor(
            reload:true
         });*/
         this.openSnackBar("Error en la solicitud", 'Cerrar');
+        //this.router.navigate(['/nav']);
+        this.authService.logout();
      });
   }
 

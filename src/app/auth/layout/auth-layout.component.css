@@ -11,7 +11,7 @@
   left: 0;
   width: 100vw; /* Ancho igual al ancho de la ventana del navegador */
   height: 100vh; /* Alto igual al alto de la ventana del navegador */
-  /*background-image: url('fondo.jpeg');*/
+  background-image: url('../../../assets/fondo.jpeg');
   background-size: cover;
   background-position: center;
 }
