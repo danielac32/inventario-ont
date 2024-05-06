@@ -25,7 +25,7 @@ import {Product} from '../interfaces/product.interface'
 import {ProductService} from '../services/product.service'
 import {CategoryComponent} from '../component/category/category.component'
 import {ReportComponent} from '../component/report/report.component'
-
+import {MessageService} from '../services/subjectService';
 
 
 @Component({
@@ -62,7 +62,8 @@ export class NavigationComponent implements OnInit {
               public authService: AuthService,
               private productService:ProductService,
               public dialog: MatDialog,
-              private _snackBar: MatSnackBar
+              private _snackBar: MatSnackBar,
+              private messageService: MessageService
               ) {
     this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset)
       .pipe(
@@ -158,7 +159,9 @@ export class NavigationComponent implements OnInit {
           if(response!==undefined){
                this.productService.create(response).subscribe(response => {
                    this.openSnackBar('Producto Creado', 'Cerrar');
-
+                   this.messageService.sendMessage({
+                        receiver:"index-products"
+                   });
                    this.router.navigate(['/nav/products']);
                }, error => {
                   console.error('Error en la solicitud :', error);

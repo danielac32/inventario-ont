@@ -87,10 +87,10 @@ loadProducts(): void {
       this.page = meta.page;
       this.total = meta.total;
 
-      console.log("limit: ",this.limit)
-      console.log("page: ",this.page)
-      console.log("last page: ",this.metaLastPage)
-      console.log("total: ",this.total)
+      //console.log("limit: ",this.limit)
+      //console.log("page: ",this.page)
+      //console.log("last page: ",this.metaLastPage)
+      //console.log("total: ",this.total)
 
     }else{
       console.log("no hay meta")
@@ -122,6 +122,7 @@ loadProducts(): void {
     });*/
     this.limit=5;
     this.page=1;
+
     this.loadProducts();
   }
 

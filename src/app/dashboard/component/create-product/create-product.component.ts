@@ -75,8 +75,8 @@ constructor(
                               categoriaId:Number(categoria),
                               userId:Number(user.id)
                             });
-       this.messageService.sendMessage({
-              receiver:"index-products"
-       });
+       //this.messageService.sendMessage({
+         //     receiver:"index-products"
+       //});
   }
 }
